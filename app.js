@@ -17,7 +17,7 @@ app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, '/static'));
 
 let { mainRouter, loginRouter } = require('./router');
-let {userRouter} = require('./router');
+let {userRouter, houseRouter} = require('./router');
 
 app.engine('.hbs', expHbs({
     extname: '.hbs',
@@ -25,6 +25,7 @@ app.engine('.hbs', expHbs({
 }));
 
 app.use('/users', userRouter);
+app.use('/houses', houseRouter);
 
 
 app.get('/', (req, res)=>{

@@ -1,21 +1,19 @@
 const dataBase = require('../../database').getInstance();
 const errorHandler = require('../../error/errorHandler');
-const { userService } = require('../../service');
-const {USER_ROLES, USER_STATUS} = require('../../constant');
+const { houseService } = require('../../service');
+const {} = require('../../constant');
 
 module.exports = async (req, res) => {
     try {
-        const user = req.body;
+        const house = req.body;
 
-        user.role_id = USER_ROLES.USER;
-        user.status_id = USER_STATUS.ACTIVE;
-
-        await userService.createUser(user);
+        house.user_id = 1; //TODO
+        await houseService.createHouse(house);
 
         res.json(201).end();
 
         throw new errorHandler('Error', 403, 'createUser')
-    } catch (e) { // чому тут вилазить помилка коли я додаю нового юзера?
+    } catch (e) { // TODO
         // res
         //     .status(e.status)
         //     .json({
